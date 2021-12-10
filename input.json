@@ -1,0 +1,41 @@
+{
+    "services": [
+        {
+            "product": {
+                "id": "POS"
+            }
+        }
+    ],
+    "bank": {
+        "id": "51",
+        "branch": {
+            "id": "076"
+        },
+        "businessAgent": {
+            "id": "9823"
+        }
+    },
+    "accounts": [
+        {
+            "number": "23456789098789098765",
+            "numberType": {
+                "id": "LIC"
+            },
+            "currencies": [
+                {
+                    "currency": "PEN",
+                    "isMajor": true
+                }
+            ]
+        }
+    ],
+    "personType": "LEGAL_PERSON",
+    "businessDocuments": [
+        {
+        "documentNumber": "29092189761",
+        "businessDocumentType": {
+            "id": "RUC"
+        }
+        }
+    ]
+}
