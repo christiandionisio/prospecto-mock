@@ -9,11 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/mockService")
@@ -44,8 +44,9 @@ public class MockController {
 
     private Map<String, Object> resourceToJson(Resource resourcePath) {
         try {
-            File file =  resourceFileResponseOK.getFile();
-            String json = new String(Files.readAllBytes(file.toPath()));
+            InputStream inputStream =  resourceFileResponseOK.getInputStream();
+            String json = new BufferedReader(new InputStreamReader(inputStream))
+                    .lines().collect(Collectors.joining("\n"));
             LOGGER.info("Json from file: " + json );
 
             Map<String,Object> result = new ObjectMapper().readValue(json, HashMap.class);
