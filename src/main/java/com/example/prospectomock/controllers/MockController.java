@@ -1,5 +1,6 @@
 package com.example.prospectomock.controllers;
 
+import com.example.prospectomock.dto.prospectus.ProspectusDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,7 +31,9 @@ public class MockController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> mockService(@RequestBody String input) {
+    public ResponseEntity<Object> mockService(@RequestBody ProspectusDTO prospectusDTO) {
+
+        LOGGER.info(prospectusDTO.toString());
 
         Map<String, Object> mapResponse = resourceToJson(resourceFileResponseOK);
 
